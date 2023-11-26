@@ -1,0 +1,10 @@
+FROM ubuntu:18.10
+
+#se configura los repositorios para obtener ssh
+
+RUN sed -i 's/archive/old-releases/g' /etc/apt/sources.list
+RUN sed -i '/^deb.*security.ubuntu.com/s/^/#/' /etc/apt/sources.list
+
+#se instala el cliente ssh
+RUN apt-get update
+RUN apt-get install -y sudo net-tools openssh-client
